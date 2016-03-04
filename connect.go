@@ -41,14 +41,12 @@ type pConduitConnect struct {
 
 type conduitConnectResponse struct {
 	SessionKey   string `json:"sessionKey"`
-	ConnectionID int64  `json:"connectionID"`
 }
 
 // Session is the conduit session state
 // that will be sent in the JSON params as __conduit__.
 type Session struct {
 	SessionKey   string `json:"sessionKey"`
-	ConnectionID int64  `json:"connectionID"`
 }
 
 // Connect calls conduit.connect to open an authenticated
@@ -74,7 +72,6 @@ func (c *Conn) Connect(user, cert string) error {
 
 	c.Session = &Session{
 		SessionKey:   resp.SessionKey,
-		ConnectionID: resp.ConnectionID,
 	}
 
 	return nil
